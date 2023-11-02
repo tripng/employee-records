@@ -1,0 +1,9 @@
+body {
+  padding-top: 90px;
+}
+#basicdiagram {
+  margin: auto;
+  height: 100vh;
+  border-style: 1 px solid black;
+  border-width: 1px;
+}
