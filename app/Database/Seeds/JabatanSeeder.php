@@ -14,7 +14,7 @@ class JabatanSeeder extends Seeder
                 'divisi_id' => null,
                 'departemen_id' => null,
                 'section_head_id' => null,
-                'hirarki' => 'direktor',
+                'hirarki' => 'direktur',
                 'kode_jabatan' => 'A',
             ],'divisi A' => [
                 'divisi_id' => 1,

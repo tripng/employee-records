@@ -10,7 +10,7 @@
             <div class="col-6">
               <label for="hierarchy" class="form-label">Pilih Hirarki Karyawan<span class="text-danger">*</span></label>
               <select class="form-select <?= ($validation->hasError('hirarki-karyawan')) ? 'is-invalid' : ''; ?>" id="hierarchy" name="hirarki-karyawan" aria-label="Default select example">
-                <option value="direktor" <?= $page==1 ? 'selected' : ''?>>Direktorate</option>
+                <option value="direktur" <?= $page==1 ? 'selected' : ''?>>Direktorate</option>
                 <option value="divisi" <?= $page==2 ? 'selected' : ''?>>Ketua Divisi</option>
                 <option value="departemen" <?= $page==3 ? 'selected' : ''?>>Ketua Departemen</option>
                 <option value="bagian" <?= $page==4 ? 'selected' : ''?>>Ketua Bagian</option>

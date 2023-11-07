@@ -11,7 +11,7 @@
             <div class="col-6">
               <label for="hierarchy" class="form-label">Jabatan Saat Ini<span class="text-danger">*</span></label>
               <select class="form-select <?= ($validation->hasError('hirarki-karyawan')) ? 'is-invalid' : ''; ?>" id="hierarchy" name="hirarki-karyawan" aria-label="Default select example">
-                <option value="direktor" <?= $hierarchy=='direktor' ? 'selected' : ''?>>Direktorate</option>
+                <option value="direktur" <?= $hierarchy=='direktur' ? 'selected' : ''?>>Direktorate</option>
                 <option value="divisi" <?= $hierarchy=='divisi' ? 'selected' : ''?>>Ketua Divisi</option>
                 <option value="departemen" <?= $hierarchy=='departemen' ? 'selected' : ''?>>Ketua Departemen</option>
                 <option value="bagian" <?= $hierarchy=='bagian' ? 'selected' : ''?>>Ketua Bagian</option>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-6">
               <label for="section" class="form-label">Pilih Jika Karyawan Adalah Staff</label>
-              <select class="form-select <?= ($validation->hasError('bagian')) ? 'is-invalid' : ''; ?>" id="section" name="bagian" aria-label="Default select example">
+              <select <?= $hierarchy!='staf' ? 'disabled' : '' ?> class="form-select <?= ($validation->hasError('bagian')) ? 'is-invalid' : ''; ?>" id="section" name="bagian" aria-label="Default select example">
                 <option value="">Tidak Masuk di Section Manapun</option>
                 <?php foreach($nama_bagian as $nama): ?>
                   <option <?= $hierarchy=='staf'&&$nama['section_head_id']==$parent['id'] ? 'selected' : '' ?> value="<?= $nama['section_head_id'] ?>"><?= $nama['nama_jabatan'] ?></option>
@@ -89,7 +89,7 @@
           <div class="row d-flex justify-content-center my-3">
             <div class="d-mb-3 col-6">
               <label for="divisionName" class="form-label">Divisi</label>
-              <input type="text" class="form-control <?= ($validation->hasError('nama-divisi')) ? 'is-invalid' : ''; ?>"  id="divisionName" name="nama-divisi" placeholder="Nama Divisi" list="namaDivisi" value="<?= $employee['nama_divisi'] ?? '' ?>"/>
+              <input <?= $hierarchy=='direktur' ? 'disabled' : '' ?> type="text" class="form-control <?= ($validation->hasError('nama-divisi')) ? 'is-invalid' : ''; ?>"  id="divisionName" name="nama-divisi" placeholder="Nama Divisi" list="namaDivisi" value="<?= $employee['nama_divisi'] ?? '' ?>"/>
               <datalist id="namaDivisi">
                   <?php foreach($nama_divisi as $nama): ?>
                     <option value="<?= $nama['nama_divisi'] ?>">
@@ -103,7 +103,7 @@
             </div>
             <div class="d-mb-3 col-6">
               <label for="directorName" class="form-label">Departemen</label>
-              <input type="text" class="form-control <?= ($validation->hasError('nama-departemen')) ? 'is-invalid' : ''; ?>" value="<?= $employee['nama_departemen'] ?? '' ?>" id="departementName" name="nama-departemen" list="namaDepartemen" placeholder="Nama Departemen"/>
+              <input <?= ($hierarchy!='direktur' && $hierarchy!='divisi') ? '' : 'disabled' ?> type="text" class="form-control <?= ($validation->hasError('nama-departemen')) ? 'is-invalid' : ''; ?>" value="<?= $employee['nama_departemen'] ?? '' ?>" id="departementName" name="nama-departemen" list="namaDepartemen" placeholder="Nama Departemen"/>
               <datalist id="namaDepartemen">
                   <?php foreach($nama_departemen as $nama): ?>
                     <option value="<?= $nama['nama_departemen'] ?>">

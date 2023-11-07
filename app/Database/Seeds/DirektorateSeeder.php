@@ -11,7 +11,7 @@ class DirektorateSeeder extends Seeder
     {
         $direktorate = [
             'kode_direktorate' => 'A',
-            'nama_direktorate' => "direktor",
+            'nama_direktorate' => "direktur",
             'created_at' => Time::now(),
             'updated_at' => Time::now()
         ];

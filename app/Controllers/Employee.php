@@ -104,7 +104,7 @@ class Employee extends BaseController
                                     : $data_departemen['kode_departemen']);            
             // dd($kode_bagian);
 
-            if($this->request->getPost('hirarki-karyawan')=='direktor') $kode_jabatan = "$kode_direktor";
+            if($this->request->getPost('hirarki-karyawan')=='direktur') $kode_jabatan = "$kode_direktor";
             else if($this->request->getPost('hirarki-karyawan')=='divisi') $kode_jabatan = "$kode_direktor{$this->generateCode($this->division,'kode_divisi',null)}";
             else if($this->request->getPost('hirarki-karyawan')=='departemen') $kode_jabatan = "$kode_direktor$kode_divisi{$this->generateCode($this->departement,'kode_departemen',null)}";
             else if($this->request->getPost('hirarki-karyawan')=='bagian' || $this->request->getPost('hirarki-karyawan')=='staf') {
@@ -217,7 +217,7 @@ class Employee extends BaseController
             'nama' => $this->request->getPost('nama-karyawan'),
             // -------------Jabatan id Berubah jika hirarki diupdate 
         ];
-        if($hierarchy == 'direktor'){
+        if($hierarchy == 'direktur'){
             
         }else if($hierarchy == 'divisi'){
             $data_division = [

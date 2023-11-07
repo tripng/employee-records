@@ -88,7 +88,7 @@ class Home extends BaseController
         ]; 
 
         // Cek Setiap hirarki
-        if($hierarchy === 'direktor'){
+        if($hierarchy === 'direktur'){
             $data['employee'] = $getPosition;
         }
         else if($hierarchy == 'divisi'){
@@ -104,7 +104,6 @@ class Home extends BaseController
             $data['employee'] = $this->position->relation(1,1,1)->getWithCode($segment)->first();
             $data['parent'] = $this->position->relation(0,0,1)->getWithHierarchy('bagian')->where(['kode_section_head' => $data['employee']['kode_section_head']])->first();
         }
-        
         // dd($data['employee']);
         $hasFlash = $this->session->get('validation');
         if($hasFlash) $data['validation'] = $this->session->get('validation');
